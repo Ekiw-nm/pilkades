@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bilik Suara Digital • Marengmang</title><meta name="theme-color" content="#b71925">
+<link rel="manifest" href="manifest.webmanifest" crossorigin="use-credentials">
+<link rel="icon" href="assets/app-192.png" type="image/png">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="bilik.css?v=10"></head>
+<body class="voting-kiosk">
+<header class="top"><a class="brand" href="./"><span class="brand-icon">▣</span><span>BILIK SUARA DIGITAL<small>DESA MARENGMANG · 2026</small></span></a><div class="top-actions"><span id="mode" class="badge">SIMULASI LOKAL</span><button id="fullscreen" class="quiet">Layar penuh ⛶</button></div></header>
+<main>
+<nav class="steps" aria-label="Tahapan"><span id="step1" class="active">01 <b>Verifikasi undangan</b></span><i></i><span id="step2">02 <b>Pilih calon</b></span><i></i><span id="step3">03 <b>Konfirmasi</b></span></nav>
+<section id="checkin" class="entry panel">
+<div class="entry-intro"><div class="crest" role="img" aria-label="Logo Panitia Pemilihan Kepala Desa Marengmang"></div><p class="eyebrow">PEMILIHAN KEPALA DESA</p><h1>Satu pilihan.<br>Untuk Marengmang.</h1><p>Selamat datang di bilik suara digital.<br>Siapkan kode QR pada surat undangan Anda.</p><div class="location">DESA MARENGMANG<br>KECAMATAN KALIJATI · KABUPATEN SUBANG<br><b>TAHUN 2026</b></div></div>
+<div class="scan-panel"><h2>Pindai undangan Anda</h2><p>Arahkan kode QR ke kamera atau masukkan kode undangan.</p><div id="scan-placeholder"><span>▦</span><p>Letakkan QR di depan kamera</p></div><div class="row"><button id="camera" class="primary">Aktifkan kamera</button><label class="button secondary">Unggah QR<input id="qr-file" type="file" accept="image/*" hidden></label></div><form id="token-form"><label for="token">Kode undangan</label><div class="row"><input id="token" autocomplete="off" spellcheck="false" placeholder="Masukkan kode undangan" required maxlength="2000"><button class="dark" type="submit">Lanjut →</button></div></form><p id="entry-error" class="error" role="alert"></p><div id="demo-tip" class="tip"></div></div>
+</section>
+<section id="ballot" class="panel ballot" hidden><div class="ballot-heading"><div class="crest"></div><h1>SURAT SUARA</h1><p>PEMILIHAN KEPALA DESA MARENGMANG<br>KECAMATAN KALIJATI · KABUPATEN SUBANG<br>TAHUN 2026</p></div><p class="instruction">Sentuh foto calon pilihan Anda</p><div id="candidates" class="candidates" role="group" aria-label="Daftar calon"></div><p class="selection" id="selection" aria-live="polite">Belum ada calon yang dipilih</p><div class="ballot-actions"><button id="review" class="primary wide" disabled>PILIH KANDIDAT INI</button></div></section>
+<section id="success" class="panel success" hidden>
+<div class="success-copy"><div class="check">✓</div><p class="eyebrow">PEMILIHAN SELESAI</p><h1>Terima kasih</h1><p id="success-text"></p></div>
+<div class="receipt-preview"><div id="receipt-printer" class="receipt-printer" aria-label="Animasi printer mengeluarkan bukti QR">
+<div class="printer-top"><span class="printer-led"></span><span>PRINTER BUKTI PEMILIHAN</span></div><div class="printer-slot"></div>
+<div class="paper-window"><article id="vote-ticket" class="vote-ticket"><h2>BUKTI SIMULASI</h2><p>PEMILIHAN KEPALA DESA<br>MARENGMANG · 2026</p><img id="receipt-qr" alt="QR hasil pilihan simulasi" width="200" height="200"><p class="ticket-id" id="receipt-id"></p><p id="receipt-time"></p><div class="ticket-divider"></div><strong>MASUKKAN KE KOTAK SUARA</strong><small>Satu bukti untuk satu sesi simulasi.<br>Bukan surat suara resmi.</small></article></div>
+<div class="printer-base"><span>▰ ▰ ▰</span><span>QR RECEIPT</span></div></div>
+<p id="print-status" class="print-status" role="status" aria-live="polite">Menyiapkan bukti QR…</p></div>
+<div class="ballot-box-guide"><span class="ballot-box-icon" aria-hidden="true">▣ ↓</span><div><h2>Masukkan kertas hasil pemilihan<br>ke kotak suara</h2><p>Cetak bukti QR, ambil kertas dari printer, lalu masukkan ke kotak suara yang disediakan panitia.</p></div></div>
+<p class="receipt-note">Tampilan ini adalah animasi simulasi. Untuk mengeluarkan kertas sungguhan, gunakan tombol cetak dan pilih printer yang terhubung.</p>
+<div class="receipt-actions"><button id="print-receipt" class="dark" disabled>Cetak bukti QR</button><button id="next" class="primary">Selesai · Pemilih berikutnya →</button></div>
+</section>
+</main>
+<footer><span>Panitia Pemilihan Kepala Desa Marengmang · 2026</span><a href="petugas.html">Panel petugas ↗</a></footer>
+<dialog id="camera-view" class="camera-view" aria-label="Pindai QR undangan"><div class="camera-toolbar"><div><strong>PINDAI QR UNDANGAN</strong><span>Arahkan QR ke kamera. Pilihan calon akan terbuka otomatis.</span></div><button id="close-camera" type="button">✕ Tutup kamera</button></div><div id="reader"></div><div class="camera-bottom"><p id="camera-status" role="status" aria-live="polite">Menyiapkan kamera…</p><p id="camera-error" role="alert"></p></div></dialog><div id="file-reader" hidden></div>
+<dialog id="confirmation" aria-labelledby="confirmation-title">
+  <div class="dialog-body">
+    <h2 id="confirmation-title">Konfirmasi pilihan Anda</h2>
+    <div id="chosen"></div>
+    <p id="vote-error" class="error" role="alert"></p>
+    <div class="row">
+      <button id="repeat" class="primary">ULANGI</button>
+      <button id="submit-vote" class="blue">PILIH</button>
+    </div>
+  </div>
+</dialog>
+<script src="config.js"></script><script src="vendor/html5-qrcode.min.js"></script><script src="vendor/qrcode.js"></script><script src="data.js?v=qr-cross-device-1"></script><script src="app.js?v=10"></script></body></html>

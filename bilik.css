@@ -1,0 +1,212 @@
+/* Tata letak layar bilik suara. Panel petugas memakai style.css. */
+@media print {
+  .receipt-preview { display: contents; }
+}
+
+@media screen {
+  .voting-kiosk {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: #eeeee8;
+  }
+
+  .voting-kiosk > .top { padding: 6px clamp(14px, 3vw, 44px); }
+  .voting-kiosk > main {
+    width: 100%;
+    padding-inline: clamp(12px, 3vw, 32px);
+    min-height: 0;
+    margin: 0 auto;
+    flex: 1;
+    display: grid;
+    align-content: center;
+    gap: 12px;
+    padding-block: 10px;
+  }
+  .voting-kiosk > footer {
+    width: 100%;
+    padding: 8px clamp(14px, 3vw, 32px);
+    align-items: center;
+    color: #5d675a;
+  }
+  .voting-kiosk > footer a { padding-block: 5px; }
+  .voting-kiosk .steps { padding: 2px 0; }
+  .voting-kiosk .panel {
+    border-radius: 12px;
+    border-color: #d6dbd1;
+    box-shadow: 0 12px 32px #25342714;
+  }
+
+  .voting-kiosk .entry-intro {
+    display: grid;
+    align-content: center;
+    padding: clamp(16px, 3vw, 34px);
+  }
+  .voting-kiosk .entry-intro .crest { margin: 0 0 8px; }
+  .voting-kiosk .entry-intro h1 { font-size: clamp(27px, 4vw, 45px); margin: 5px 0; }
+  .voting-kiosk .entry-intro p { margin: 5px 0; }
+  .voting-kiosk .location { margin-top: 12px; }
+  .voting-kiosk .scan-panel { padding: clamp(16px, 3vw, 30px); align-self: center; }
+  .voting-kiosk .scan-panel h2 { margin: 0 0 5px; }
+  .voting-kiosk .scan-panel > p { margin: 0 0 10px; }
+  .voting-kiosk #scan-placeholder { display: none; }
+  .voting-kiosk #token-form { margin: 12px 0 0; }
+  .voting-kiosk .scan-panel .button { margin: 0; }
+  .voting-kiosk .tip { margin-top: 10px; padding: 8px 10px; }
+  .voting-kiosk #entry-error:not(:empty) { margin-top: 8px; }
+
+  .voting-kiosk .ballot {
+    background: white;
+    border-top: 4px solid var(--red);
+    padding: 12px clamp(10px, 2vw, 24px);
+  }
+  .voting-kiosk .ballot-heading {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    column-gap: 12px;
+    text-align: left;
+  }
+  .voting-kiosk .ballot-heading .crest {
+    grid-row: span 2;
+    width: 38px;
+    height: 45px;
+    margin: 0;
+  }
+  .voting-kiosk .ballot-heading h1 { align-self: end; margin: 0; }
+  .voting-kiosk .ballot-heading p { margin: 3px 0 0; line-height: 1.35; }
+  .voting-kiosk .instruction { margin: 8px 0 10px; }
+  .voting-kiosk .candidates {
+    gap: clamp(7px, 1.6vw, 18px);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: min(940px, 140vh);
+    max-width: min(940px, 140dvh);
+  }
+  .voting-kiosk .candidate { overflow: hidden; border-radius: 8px; }
+  .voting-kiosk .candidate .number { font-size: 23px; padding: 2px; }
+  .voting-kiosk .candidate .name {
+    min-height: 33px;
+    white-space: normal;
+    line-height: 1.15;
+    font-size: clamp(10px, 1.5vw, 15px);
+  }
+  .voting-kiosk .candidate[aria-pressed=true] { outline-width: 3px; outline-offset: 2px; transform: none; }
+  .voting-kiosk .selection { margin: 8px 0 5px; }
+  .voting-kiosk .ballot-actions .wide { width: 100%; }
+
+  .voting-kiosk #confirmation {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: #f3f3ef;
+  }
+  .voting-kiosk #confirmation .dialog-body {
+    min-height: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto minmax(180px, 1fr) auto auto;
+    gap: clamp(5px, 1.4vh, 12px);
+    padding: clamp(8px, 2vh, 18px) clamp(10px, 4vw, 44px);
+  }
+  .voting-kiosk #confirmation h2 {
+    margin: 0;
+    font-size: clamp(18px, 3vw, 30px);
+    line-height: 1.2;
+  }
+  .voting-kiosk #chosen {
+    min-width: 0;
+    display: grid;
+    place-items: center;
+    container-type: size;
+  }
+  .voting-kiosk #chosen .candidate {
+    /* Pertahankan rasio foto, dengan ruang untuk nomor dan nama calon. */
+    width: min(100%, max(88px, calc((100vh - 180px) * .85)));
+    width: min(100cqw, max(88px, calc((100cqh - 70px) * .85)));
+    margin: 0;
+  }
+  .voting-kiosk #chosen .number { font-size: 22px; }
+  .voting-kiosk #chosen .name { min-height: 33px; }
+  .voting-kiosk #confirmation #vote-error { margin: 0; }
+  .voting-kiosk #confirmation .row {
+    width: min(100%, 740px);
+    margin: 0 auto;
+  }
+
+  .voting-kiosk .success {
+    display: grid;
+    grid-template: "intro preview" auto "guide preview" auto "note preview" auto "actions preview" auto / minmax(0, 1fr) minmax(220px, .8fr);
+    align-items: center;
+    gap: 6px clamp(16px, 4vw, 48px);
+    padding: 15px clamp(14px, 3vw, 32px);
+    text-align: left;
+  }
+  .voting-kiosk .success-copy { grid-area: intro; }
+  .voting-kiosk .success .check { margin: 0 0 6px; width: 36px; height: 36px; line-height: 36px; font-size: 22px; }
+  .voting-kiosk .success h1 { font-size: 29px; margin: 5px 0; }
+  .voting-kiosk .success-copy p { margin: 3px 0; }
+  .voting-kiosk .receipt-preview { grid-area: preview; text-align: center; min-width: 0; }
+  .voting-kiosk .receipt-printer { width: min(290px, 100%); margin: 0 auto; }
+  .voting-kiosk .paper-window { padding-inline: 16px; padding-bottom: 5px; }
+  .voting-kiosk .vote-ticket { padding: 9px 7px; }
+  .voting-kiosk .vote-ticket h2, .voting-kiosk .vote-ticket p { margin: 2px 0; }
+  .voting-kiosk .vote-ticket img { width: clamp(112px, 24dvh, 176px); margin: 3px auto; }
+  .voting-kiosk .ticket-divider { margin: 5px 0; }
+  .voting-kiosk .vote-ticket small { margin-top: 3px; }
+  .voting-kiosk .print-status { margin: 2px 0 0; }
+  .voting-kiosk .ballot-box-guide { grid-area: guide; justify-content: start; margin: 0; padding: 10px; }
+  .voting-kiosk .ballot-box-guide h2 { font-size: 16px; }
+  .voting-kiosk .ballot-box-guide p { margin: 3px 0 0; }
+  .voting-kiosk .receipt-note { grid-area: note; margin: 0; }
+  .voting-kiosk .receipt-actions { grid-area: actions; justify-content: start; gap: 6px; }
+  .voting-kiosk .receipt-actions button { margin: 0; padding-inline: 12px; }
+}
+
+@media screen and (min-width: 600px) {
+  .voting-kiosk .entry { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+  .voting-kiosk .top #fullscreen { display: inline-flex; }
+}
+
+@media screen and (max-width: 599px) {
+  .voting-kiosk .entry-intro .location { display: none; }
+  .voting-kiosk .candidates { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: min(330px, 45dvh); }
+  .voting-kiosk .success { grid-template: "intro" "preview" "guide" "note" "actions" / minmax(0, 1fr); }
+  .voting-kiosk .receipt-actions button { flex: 1; }
+}
+
+@media screen and (max-height: 650px) and (min-width: 600px) {
+  .voting-kiosk > .top { padding-block: 3px; }
+  .voting-kiosk > footer { padding-block: 1px; }
+  .voting-kiosk > main { padding-block: 5px; gap: 7px; }
+  .voting-kiosk .entry-intro, .voting-kiosk .scan-panel { padding: 13px 18px; }
+  .voting-kiosk .entry-intro .crest { width: 46px; height: 54px; }
+  .voting-kiosk .entry-intro h1 { font-size: clamp(24px, 3.5vw, 33px); }
+  .voting-kiosk .entry-intro .location { display: none; }
+  .voting-kiosk .ballot { padding-block: 8px; }
+  .voting-kiosk .ballot-heading h1 { font-size: 18px; letter-spacing: .5px; }
+  .voting-kiosk .ballot-heading p { font-size: 10px; }
+  .voting-kiosk .ballot-heading .crest { width: 33px; height: 39px; }
+  .voting-kiosk .instruction { margin: 4px 0 8px; }
+  .voting-kiosk .candidates { max-width: max(330px, calc(295dvh - 1050px)); }
+  .voting-kiosk .candidate .number { font-size: 18px; }
+  .voting-kiosk .candidate .name { min-height: 28px; }
+  .voting-kiosk .success { padding-block: 8px; }
+  .voting-kiosk .ballot-box-guide { padding: 7px; }
+  .voting-kiosk .receipt-note { display: none; }
+  .voting-kiosk .receipt-actions button { padding-inline: 8px; }
+}
+
+@media screen and (max-height: 520px) and (min-width: 600px) {
+  .voting-kiosk .top #fullscreen { min-height: 40px; }
+  .voting-kiosk .vote-ticket small { display: none; }
+  .voting-kiosk .success .check { width: 28px; height: 28px; line-height: 28px; }
+}
